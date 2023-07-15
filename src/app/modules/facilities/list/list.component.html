@@ -1,0 +1,84 @@
+<div class="">
+ <h1 class="fs-2 fw-bold dark-purple" style="font-family: Montserrat, Sans-serif;">Facility List</h1>
+</div>
+
+<div class="add-facility-button pe-2">
+  <button mat-stroked-button class="shadow-sm rounded-3" style="color: rgb(112, 44, 145);" (click)="addFacilityDialog()"> 
+    <mat-icon>add</mat-icon> Add Facility
+  </button>
+</div>
+
+<!-- <div class="position-relative p-3">
+  <button class="btn border position-absolute top-0 end-0 dark-purple" (click)="addDummyFacility()">Add New Facility</button>
+</div> -->
+
+<div class="container py-5">
+  <div class="row row-cols-lg-3 row-cols-md-2 row-cols-1 g-5 ">
+    <div class="col" *ngFor="let facility of facilityList">
+      <div class="card border border-top-0 shadow rounded-5 h-100 w-100 ">
+        <div class="card-body dark-purple">
+          <div class="card-title text-uppercase fs-4 fw-bold orange">
+            {{facility.name}}
+          </div>
+          <div class="card-subtitle">Description</div>
+          <p class="card-text pe-3" >
+            {{facility.description}}
+          </p>
+          <ng-container *ngIf="facility.instrumentList.length > 0">
+            <div class="card-subtitle">Instruments</div>
+            <ul>
+              <li *ngFor="let instrument of facility.instrumentList">
+                {{instrument.name}}
+              </li>
+            </ul>
+          </ng-container>
+          <button mat-raised-button class="me-2" style="background: rgb(112, 44, 145); color: rgb(240, 236, 233);" [routerLink]="['/facilities/details', facility.id]">Details</button>
+          
+          <button type="button" class="btn orange hover border shadow-sm" (click)="editFacilityDialog(facility)">
+            <mat-icon >edit</mat-icon>
+          </button>
+
+          <button type="button" class="btn orange hover border shadow-sm" (click)="deleteFacility(facility.id)" style="height: 40px;"  data-bs-toggle="modal" data-bs-target="#exampleModal">
+            <mat-icon >delete</mat-icon>
+          </button>
+
+          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h3 class="modal-title text-dark" id="exampleModalLabel">Delete Facility</h3>
+                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body text-danger fw-bold">
+                  Are you sure that you want to delete the facility: {{selectedFacility.name}}? 
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                  <button type="button" class="btn btn-danger" (click)="deleteFacility(selectedFacility.id)" data-bs-dismiss="modal">
+                    <mat-icon>delete</mat-icon>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+    
+  
+  <h2 *ngIf="selectedFacilities.length > 0">
+    Selected facilities:
+    <div *ngFor="let facility of selectedFacilities">
+      {{facility.name}}, 
+    </div>
+  </h2>
+  
+  <div *ngIf="pickedFacilityName">
+    <h1>{{ pickedFacilityName }}</h1>
+  </div>
+</div>
+
+
+
+

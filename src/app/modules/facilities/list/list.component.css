@@ -1,0 +1,27 @@
+.title{
+    font-family: Montserrat, Sans-serif;  
+    font-size:18px; 
+    font-weight: bold;
+}
+
+.facility-container{
+    margin-top: 50px;
+}
+.add-facility-button{
+    position: absolute; 
+    right: 150px;
+}
+
+.facility-card{
+    padding: 20px; 
+    min-height: 200px; 
+    min-width: 420px; 
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.card-subtitle{
+    padding-top: 10px;
+    color: #4D0AA480;
+}
+
+
